@@ -29,10 +29,10 @@ class Deck {
 }
 
 const SUIT = {
-  HART: 0,
-  DIAMOND: 1,
-  SPADE: 2,
-  CLUB: 3
+  heart: 0,
+  diamond: 1,
+  spade: 2,
+  club: 3
 }
 
 const RANK = {
