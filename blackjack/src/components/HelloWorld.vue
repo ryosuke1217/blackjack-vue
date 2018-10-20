@@ -84,18 +84,25 @@
 </template>
 
 <script>
+import { Card } from '../models/Card.js'
+let card = new Card()
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted: function () {
+    console.log(card)
+    console.log(card.cards())
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang='scss'>
 h1, h2 {
   font-weight: normal;
 }
