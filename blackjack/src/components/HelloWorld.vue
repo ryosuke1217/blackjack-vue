@@ -84,18 +84,12 @@
 </template>
 
 <script>
-import { Deck } from '../models/Cards.js'
-
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  },
-  mounted () {
-    let deck = new Deck()
-    console.log(deck)
   }
 }
 </script>

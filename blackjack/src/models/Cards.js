@@ -21,11 +21,21 @@ class Deck {
     return new Deck(ret)
   }
 
-  // shuffle () {
-  // }
+  isEmpty () {
+    return this.cards.length === 0
+  }
 
-  // next () {
-  // }
+  shuffle () {
+    
+  }
+
+  getLength () {
+    return this.cards.length
+  }
+
+  next () {
+    return this.cards.pop()
+  }
 }
 
 const SUIT = {
