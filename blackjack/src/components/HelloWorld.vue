@@ -84,8 +84,7 @@
 </template>
 
 <script>
-import { Card } from '../models/Card.js'
-let card = new Card()
+import { Deck } from '../models/Cards.js'
 
 export default {
   name: 'HelloWorld',
@@ -94,9 +93,9 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
-  mounted: function () {
-    console.log(card)
-    console.log(card.cards())
+  mounted () {
+    let deck = new Deck()
+    console.log(deck)
   }
 }
 </script>
