@@ -17,4 +17,9 @@ describe('Cards.js', () => {
     }
     expect(deck.isEmpty()).toBe(true)
   })
+  it('shuffle()', () => {
+    let before = deck.getLength()
+    deck.shuffle()
+    expect(deck.getLength()).toBe(before)
+  })
 })

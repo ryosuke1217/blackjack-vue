@@ -1,3 +1,4 @@
+var _ = require('lodash')
 
 class Card {
   constructor (suit, rank) {
@@ -26,7 +27,7 @@ class Deck {
   }
 
   shuffle () {
-    
+    _.shuffle(this.cards)
   }
 
   getLength () {
