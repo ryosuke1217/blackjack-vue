@@ -1,4 +1,5 @@
 import { Deck } from '@/models/Cards'
+import { Card } from '@/models/Cards'
 
 describe('Cards.js', () => {
   let deck
@@ -21,5 +22,13 @@ describe('Cards.js', () => {
     let before = deck.getLength()
     deck.shuffle()
     expect(deck.getLength()).toBe(before)
+  })
+  it('toString()', () => {
+    let card = new Card('heart', 11)
+    expect(card.toString()).toBe('J')
+  })
+  it('point()', () => {
+    let card = new Card('heart', 11)
+    expect(card.point()).toBe(10)
   })
 })

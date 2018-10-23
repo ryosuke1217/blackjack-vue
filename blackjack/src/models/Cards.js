@@ -5,6 +5,15 @@ class Card {
     this.suit = suit
     this.rank = rank
   }
+
+  toString () {
+    return Object.keys(RANK).filter(k => RANK[k] === this.rank)[0]
+  }
+
+  point () {
+    if (this.rank > 10) return 10
+    return this.rank
+  }
 }
 
 class Deck {
@@ -15,8 +24,8 @@ class Deck {
   static init () {
     let ret = []
     for (let suit in SUIT) {
-      for (let rank in RANK) {
-        ret.push(new Card(suit, rank))
+      for (let rank of Object.keys(RANK)) {
+        ret.push(new Card(suit, RANK[rank]))
       }
     }
     return new Deck(ret)
@@ -47,19 +56,19 @@ const SUIT = {
 }
 
 const RANK = {
-  ace: 1,
-  two: 2,
-  three: 3,
-  four: 4,
-  five: 5,
-  six: 6,
-  seven: 7,
-  eight: 8,
-  nine: 9,
-  ten: 10,
-  jack: 11,
-  queen: 12,
-  king: 13
+  "A": 1,
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6,
+  "7": 7,
+  "8": 8,
+  "9": 9,
+  "10": 10,
+  "J": 11,
+  "Q": 12,
+  "K": 13
 }
 
-export { Deck }
+export { Deck, Card }
