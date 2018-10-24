@@ -1,7 +1,7 @@
 
 class Hand {
-  constructor(cards) {
-    this.cards = cards
+  constructor() {
+    this.cards = []
   }
 
   add (card) {
@@ -10,7 +10,7 @@ class Hand {
 
   score () {
     const _sum = (pre, current) => pre + current
-    const points = this.cards.map(c => c.point)
+    const points = this.cards.map(c => c.point())
     return points.reduce(_sum)
   }
 
