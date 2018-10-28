@@ -6,8 +6,10 @@ class Card {
     this.rank = rank
   }
 
-  toString () {
-    return Object.keys(RANK).filter(k => RANK[k] === this.rank)[0]
+  toObj () {
+    const s = Object.keys(SUIT).filter(k => SUIT[k] === this.suit)[0]
+    const r = Object.keys(RANK).filter(k => RANK[k] === this.rank)[0]
+    return { "suit": s, "rank": r }
   }
 
   point () {
@@ -23,9 +25,9 @@ class Deck {
 
   static init () {
     let ret = []
-    for (let suit in SUIT) {
-      for (let rank of Object.keys(RANK)) {
-        ret.push(new Card(suit, RANK[rank]))
+    for (let suit of Object.values(SUIT)) {
+      for (let rank of Object.values(RANK)) {
+        ret.push(new Card(suit, rank))
       }
     }
     return new Deck(ret)
@@ -71,4 +73,4 @@ const RANK = {
   "K": 13
 }
 
-export { Deck, Card }
+export { Deck, Card, SUIT, RANK }
