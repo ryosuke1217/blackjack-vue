@@ -3,17 +3,19 @@
 // import { Deck } from './Cards.js';
 
 class Player {
-  constructor(hand , deck, name) {
+  constructor (hand, deck, name) {
     this.hand = hand
     this.deck = deck
     this.name = name
   }
 
   score () {
-    return hand.score()
+    return this.hand.score()
   }
 
   take () {
-    hand.add(this.deck.next())
+    this.hand.add(this.deck.next())
   }
 }
+
+export { Player }

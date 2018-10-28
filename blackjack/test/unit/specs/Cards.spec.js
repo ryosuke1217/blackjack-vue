@@ -3,7 +3,7 @@ import { Deck, Card, SUIT } from '@/models/Cards'
 describe('Cards.js', () => {
   let deck
   beforeEach(() => {
-    deck = new Deck.init()
+    deck = new Deck.Init()
   })
   it('getLength()', () => {
     expect(deck.getLength()).toBe(52)
@@ -12,7 +12,7 @@ describe('Cards.js', () => {
   })
   it('isEmpty()', () => {
     expect(deck.isEmpty()).toBe(false)
-    for (let i = 0; i < 52; i++){
+    for (let i = 0; i < 52; i++) {
       deck.next()
     }
     expect(deck.isEmpty()).toBe(true)
@@ -24,7 +24,7 @@ describe('Cards.js', () => {
   })
   it('toObj()', () => {
     const card = new Card(SUIT.heart, 11)
-    expect(card.toObj()).toEqual({"suit": "heart", "rank": "J"})
+    expect(card.toObj()).toEqual({'suit': 'heart', 'rank': 'J'})
   })
   it('point()', () => {
     const card = new Card(SUIT.heart, 8)
@@ -38,10 +38,10 @@ describe('Cards.js', () => {
     const K = new Card(SUIT.heart, 13)
     expect(K.point()).toBe(10)
   })
-  it('Card initialize argument suit test', () => {
-    expect(() => {new Card(5, 4)}).toThrow(`5 is not allowed`)
-  })
-  it('Card initialize argument rank test', () => {
-    expect(() => {new Card(SUIT.heart, 15)}).toThrow(`15 is not allowed`)
-  })
+  // it('Card initialize argument suit test', () => {
+  //   expect(() => { new Card(5, 4) }).toThrow(`5 is not allowed`)
+  // })
+  // it('Card initialize argument rank test', () => {
+  //   expect(() => { new Card(SUIT.heart, 15) }).toThrow(`15 is not allowed`)
+  // })
 })

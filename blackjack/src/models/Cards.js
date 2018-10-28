@@ -2,10 +2,10 @@ var _ = require('lodash')
 
 class Card {
   constructor (suit, rank) {
-    if (Object.values(SUIT).indexOf(suit) == -1){
+    if (Object.values(SUIT).indexOf(suit) === -1) {
       throw new Error(`${suit} is not allowed`)
     }
-    if (Object.values(RANK).indexOf(rank) == -1){
+    if (Object.values(RANK).indexOf(rank) === -1) {
       throw new Error(`${rank} is not allowed`)
     }
     this.suit = suit
@@ -15,7 +15,7 @@ class Card {
   toObj () {
     const s = Object.keys(SUIT).filter(k => SUIT[k] === this.suit)[0]
     const r = Object.keys(RANK).filter(k => RANK[k] === this.rank)[0]
-    return { "suit": s, "rank": r }
+    return { 'suit': s, 'rank': r }
   }
 
   point () {
@@ -29,7 +29,7 @@ class Deck {
     this.cards = cards
   }
 
-  static init () {
+  static Init () {
     let ret = []
     for (let suit of Object.values(SUIT)) {
       for (let rank of Object.values(RANK)) {
@@ -64,19 +64,19 @@ const SUIT = {
 }
 
 const RANK = {
-  "A": 1,
-  "2": 2,
-  "3": 3,
-  "4": 4,
-  "5": 5,
-  "6": 6,
-  "7": 7,
-  "8": 8,
-  "9": 9,
-  "10": 10,
-  "J": 11,
-  "Q": 12,
-  "K": 13
+  'A': 1,
+  '2': 2,
+  '3': 3,
+  '4': 4,
+  '5': 5,
+  '6': 6,
+  '7': 7,
+  '8': 8,
+  '9': 9,
+  '10': 10,
+  'J': 11,
+  'Q': 12,
+  'K': 13
 }
 
 export { Deck, Card, SUIT, RANK }
