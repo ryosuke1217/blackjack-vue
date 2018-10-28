@@ -1,5 +1,4 @@
-import { Deck } from '@/models/Cards'
-import { Card } from '@/models/Cards'
+import { Deck, Card, SUIT } from '@/models/Cards'
 
 describe('Cards.js', () => {
   let deck
@@ -19,16 +18,24 @@ describe('Cards.js', () => {
     expect(deck.isEmpty()).toBe(true)
   })
   it('shuffle()', () => {
-    let before = deck.getLength()
+    const before = deck.getLength()
     deck.shuffle()
     expect(deck.getLength()).toBe(before)
   })
-  it('toString()', () => {
-    let card = new Card('heart', 11)
-    expect(card.toString()).toBe('J')
+  it('toObj()', () => {
+    const card = new Card(SUIT.heart, 11)
+    expect(card.toObj()).toEqual({"suit": "heart", "rank": "J"})
   })
   it('point()', () => {
-    let card = new Card('heart', 11)
-    expect(card.point()).toBe(10)
+    const card = new Card(SUIT.heart, 8)
+    expect(card.point()).toBe(8)
+  })
+  it('point() in the case J Q K', () => {
+    const J = new Card(SUIT.heart, 11)
+    expect(J.point()).toBe(10)
+    const Q = new Card(SUIT.heart, 12)
+    expect(Q.point()).toBe(10)
+    const K = new Card(SUIT.heart, 13)
+    expect(K.point()).toBe(10)
   })
 })
