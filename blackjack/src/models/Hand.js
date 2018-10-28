@@ -5,7 +5,7 @@ class Hand {
   }
 
   add (card) {
-    this.cards.append(card)
+    this.cards.push(card)
   }
 
   score () {
@@ -15,7 +15,7 @@ class Hand {
   }
 
   isBurst () {
-    return score() > 21
+    return this.score() > 21
   }
 
   containsAce () {
