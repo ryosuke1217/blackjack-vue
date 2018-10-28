@@ -2,6 +2,12 @@ var _ = require('lodash')
 
 class Card {
   constructor (suit, rank) {
+    if (Object.values(SUIT).indexOf(suit) == -1){
+      throw new Error(`${suit} is not allowed`)
+    }
+    if (Object.values(RANK).indexOf(rank) == -1){
+      throw new Error(`${rank} is not allowed`)
+    }
     this.suit = suit
     this.rank = rank
   }
