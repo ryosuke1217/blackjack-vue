@@ -38,4 +38,10 @@ describe('Cards.js', () => {
     const K = new Card(SUIT.heart, 13)
     expect(K.point()).toBe(10)
   })
+  it('Card initialize argument suit test', () => {
+    expect(() => {new Card(5, 4)}).toThrow(`5 is not allowed`)
+  })
+  it('Card initialize argument rank test', () => {
+    expect(() => {new Card(SUIT.heart, 15)}).toThrow(`15 is not allowed`)
+  })
 })
