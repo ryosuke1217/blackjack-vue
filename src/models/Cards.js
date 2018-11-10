@@ -1,5 +1,28 @@
 var _ = require('lodash')
 
+const SUIT = {
+  heart: 0,
+  diamond: 1,
+  spade: 2,
+  club: 3
+}
+
+const RANK = {
+  'A': 1,
+  '2': 2,
+  '3': 3,
+  '4': 4,
+  '5': 5,
+  '6': 6,
+  '7': 7,
+  '8': 8,
+  '9': 9,
+  '10': 10,
+  'J': 11,
+  'Q': 12,
+  'K': 13
+}
+
 class Card {
   constructor (suit, rank) {
     if (Object.values(SUIT).indexOf(suit) === -1) {
@@ -19,8 +42,7 @@ class Card {
   }
 
   point () {
-    if (this.rank > 10) return 10
-    return this.rank
+    return this.rank > 10 ? 10 : this.rank
   }
 }
 
@@ -54,29 +76,6 @@ class Deck {
   next () {
     return this.cards.pop()
   }
-}
-
-const SUIT = {
-  heart: 0,
-  diamond: 1,
-  spade: 2,
-  club: 3
-}
-
-const RANK = {
-  'A': 1,
-  '2': 2,
-  '3': 3,
-  '4': 4,
-  '5': 5,
-  '6': 6,
-  '7': 7,
-  '8': 8,
-  '9': 9,
-  '10': 10,
-  'J': 11,
-  'Q': 12,
-  'K': 13
 }
 
 export { Deck, Card, SUIT, RANK }

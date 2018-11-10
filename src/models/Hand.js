@@ -18,6 +18,12 @@ class Hand {
     return this.score() > 21
   }
 
+  descOrder () {
+    this.cards.sort(function (a, b) {
+      return (a.rank < b.rank ? 1 : -1)
+    })
+  }
+
   containsAce () {
     return this.cards.filter(c => c.rank === 1).length > 0
   }
