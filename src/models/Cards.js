@@ -66,7 +66,7 @@ class Deck {
   }
 
   shuffle () {
-    _.shuffle(this.cards)
+    return _.shuffle(this.cards)
   }
 
   getLength () {

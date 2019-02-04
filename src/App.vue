@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
   </div>
 </template>
 
 <script>
+import router from '@/router'
 export default {
-  name: 'App'
+  name: 'App',
+  mounted: function () {
+    router.push({ path: '/top' })
+  }
 }
 </script>
 
@@ -19,5 +22,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  height: 100%;
 }
 </style>
