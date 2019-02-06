@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <img v-if="rank" :src="image()" height="280">
+    <img v-if="rank" :src="image()" :height="height">
   </div>
 </template>
 
@@ -11,17 +11,20 @@ export default {
   data: () => ({
     s_card: null,
     suit: '',
-    rank: ''
+    rank: '',
+    hide: false,
+    height: null
   }),
   mounted: function () {
     this.s_card = this.card.toObj()
     this.suit = this.s_card.suit
     this.rank = this.s_card.rank
+    this.height = this.$store.getters.getDisplayHeight / 5
   },
   methods: {
     image: function () {
-      // const filename = this.hide ? 'back' : `${this.suit}_${this.rank.toString()}`
-      const filename = `${this.suit}_${this.rank}`
+      console.log(this.card)
+      const filename = this.card.hide ? 'back' : `${this.suit}_${this.rank}`
       console.log(filename)
       return require(`../assets/cards/${filename}.png`)
     }

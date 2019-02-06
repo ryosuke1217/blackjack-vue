@@ -8,6 +8,10 @@
 import router from '@/router'
 export default {
   name: 'App',
+  created: function () {
+    this.$store.commit('setDisplayHeight', window.parent.screen.height)
+    this.$store.commit('setDisplayWidth', window.parent.screen.width)
+  },
   mounted: function () {
     router.push({ path: '/top' })
   }

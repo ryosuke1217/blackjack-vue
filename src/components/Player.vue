@@ -4,12 +4,8 @@
     <div class="card-wrapper" v-if="player">
       <card v-for="(card, index) in player.hand.cards" :key="index" :card="card"></card>
     </div>
-    <v-btn @click="take">Take</v-btn>
-    <v-btn @click="stay">Stay</v-btn>
-    <!-- <div class="flex" v-show="showButtons">
-      <button @click="hit">Hit</button>
-      <button @click="stand">Stand</button>
-    </div> -->
+    <v-btn @click="hit">Hit</v-btn>
+    <v-btn @click="stand">Stand</v-btn>
     <span style="font-size:30px;">{{ score }}</span>
   </div>
 </template>
@@ -33,12 +29,15 @@ export default {
     console.log(this.player)
   },
   methods: {
-    take () {
+    hit () {
       this.player.take()
+      if (this.player.hand.isBurst()) {
+        this.$emit('stand', 'Bust')
+      }
     },
-    stay () {
-      console.log(this.player.hand.score())
-      this.score = this.player.hand.isBurst() ? 'Burst!!' : this.player.hand.score()
+    stand () {
+      this.score = this.player.hand.isBurst() ? 'Bust' : this.player.hand.score()
+      this.$emit('stand', this.score)
     }
   },
   components: {
