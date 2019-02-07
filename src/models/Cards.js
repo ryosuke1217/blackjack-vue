@@ -24,7 +24,7 @@ const RANK = {
 }
 
 class Card {
-  constructor (suit, rank) {
+  constructor (suit, rank, hide) {
     if (Object.values(SUIT).indexOf(suit) === -1) {
       throw new Error(`${suit} is not allowed`)
     }
@@ -33,12 +33,13 @@ class Card {
     }
     this.suit = suit
     this.rank = rank
+    this.hide = false
   }
 
   toObj () {
     const s = Object.keys(SUIT).filter(k => SUIT[k] === this.suit)[0]
     const r = Object.keys(RANK).filter(k => RANK[k] === this.rank)[0]
-    return { 'suit': s, 'rank': r }
+    return { 'suit': s, 'rank': r, 'hide': false }
   }
 
   point () {

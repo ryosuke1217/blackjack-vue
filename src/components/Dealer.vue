@@ -2,7 +2,7 @@
   <div class="dealer">
     <span style="font-size:30px;">Dealer</span>
     <div class="card-wrapper" v-if="dealer">
-      <card v-for="(card, index) in dealer.hand.cards" :key="index" :card="card"></card>
+      <card v-for="(card, index) in dealer.hand.cards" :key="index" :card="card" :hide="card.hide"></card>
     </div>
   </div>
 </template>

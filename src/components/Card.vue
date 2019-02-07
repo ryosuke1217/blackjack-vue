@@ -7,24 +7,22 @@
 <script>
 export default {
   name: 'Card',
-  props: ['card'],
+  props: ['card', 'hide'],
   data: () => ({
-    s_card: null,
     suit: '',
     rank: '',
-    hide: false,
     height: null
   }),
   mounted: function () {
-    this.s_card = this.card.toObj()
-    this.suit = this.s_card.suit
-    this.rank = this.s_card.rank
+    let _card = this.card.toObj()
+    this.suit = _card.suit
+    this.rank = _card.rank
     this.height = this.$store.getters.getDisplayHeight / 5
   },
   methods: {
     image: function () {
       console.log(this.card)
-      const filename = this.card.hide ? 'back' : `${this.suit}_${this.rank}`
+      const filename = this.hide ? 'back' : `${this.suit}_${this.rank}`
       console.log(filename)
       return require(`../assets/cards/${filename}.png`)
     }

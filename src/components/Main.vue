@@ -38,17 +38,15 @@ export default {
     },
     result (dealerScore) {
       this.dealerScore = dealerScore > 21 ? 'Bust' : dealerScore
-      this.message = `Dealer : ${dealerScore} / Player : ${this.playerScore}`
+      this.message = `Dealer : ${this.dealerScore} / Player : ${this.playerScore}`
       this.resultMessage = this.resultMsg()
     },
     resultMsg () {
-      console.log(this.dealerScore)
-      console.log(this.playerScore)
-      console.log(this.playersScore > this.dealerScore)
-      if (this.playersScore > this.dealerScore || this.dealersScore === 'Bust') {
+      if (this.playerScore > this.dealerScore || this.dealerScore === 'Bust') {
+        console.log('you win')
         return 'You Win'
       }
-      if (this.playersScore < this.dealersScore || this.playersScore === 'Bust') {
+      if (this.playerScore < this.dealerScore || this.playerScore === 'Bust') {
         return 'You Lose'
       }
       return 'Draw'
