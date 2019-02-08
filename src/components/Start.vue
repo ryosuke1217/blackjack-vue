@@ -29,7 +29,7 @@ export default {
 
 <style>
 #start-txt{
-  font-size: 6vw;
+  font-size: 6vmin;
   height: 400px;
   line-height: 400px;
 }

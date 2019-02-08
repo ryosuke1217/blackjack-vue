@@ -4,7 +4,6 @@
     <Dealer v-if="deck" :deck="deck" ref="dealer" @result="result"/>
     <div class="result-msg">
       {{ message }}
-      {{ showBtn }}
     </div>
     <Player v-if="deck" :deck="deck" :show="showBtn" @stand="stand"/>
     <v-btn id="start-btn" large color="#1867c0" @click="submit">REMATCH</v-btn>

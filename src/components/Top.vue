@@ -26,7 +26,7 @@ export default {
 
 <style>
 #title{
-  font-size: 5vw;
+  font-size: 5vmin;
 }
 #start-btn{
   margin-top: 50px;
