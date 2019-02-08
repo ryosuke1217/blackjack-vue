@@ -43,6 +43,9 @@ export default {
 </script>
 
 <style>
+.dealer {
+  margin-top: 20px;
+}
 .card-wrapper {
   display: flex;
   justify-content: center;

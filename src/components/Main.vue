@@ -82,6 +82,7 @@ export default {
 <style>
 .main {
   background: url("../assets/background.jpg") center center / cover no-repeat fixed;
+  margin-top: -60px;
 }
 .name {
   font-size: 30px;
