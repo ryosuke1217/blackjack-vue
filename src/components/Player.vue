@@ -1,12 +1,13 @@
 <template>
   <div class="player">
-    <span style="font-size:30px;">Player</span>
+    <span class="name">Player</span>
     <div class="card-wrapper" v-if="player">
       <card v-for="(card, index) in player.hand.cards" :key="index" :card="card"></card>
     </div>
-    <v-btn @click="hit">Hit</v-btn>
-    <v-btn @click="stand">Stand</v-btn>
-    <span style="font-size:30px;">{{ score }}</span>
+    <div v-if="show" class="action-btn">
+      <v-btn @click="hit">Hit</v-btn>
+      <v-btn @click="stand">Stand</v-btn>
+    </div>
   </div>
 </template>
 
@@ -16,7 +17,7 @@ import { Player } from '@/models/Player.js'
 import { Hand } from '@/models/Hand.js'
 export default {
   name: 'Player',
-  props: ['deck'],
+  props: ['deck', 'show'],
   data: () => ({
     player: null,
     score: null
@@ -26,7 +27,6 @@ export default {
     this.player = new Player(new Hand(), this.deck, 'test')
     this.player.take()
     this.player.take()
-    console.log(this.player)
   },
   methods: {
     hit () {
@@ -50,5 +50,8 @@ export default {
 .card-wrapper {
   display: flex;
   justify-content: center;
+}
+.action-btn {
+
 }
 </style>

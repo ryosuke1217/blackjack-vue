@@ -21,9 +21,7 @@ export default {
   },
   methods: {
     image: function () {
-      console.log(this.card)
       const filename = this.hide ? 'back' : `${this.suit}_${this.rank}`
-      console.log(filename)
       return require(`../assets/cards/${filename}.png`)
     }
   }

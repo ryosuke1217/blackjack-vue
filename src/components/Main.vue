@@ -1,16 +1,22 @@
 <template>
   <div class="main">
-    <dealer v-if="deck" :deck="deck" ref="dealer" @result="result"/>
-    <player v-if="deck" :deck="deck" @stand="stand"/>
-    {{ message }}
-    {{ resultMessage }}
+    <Dialog v-if="dialog" @close="closeDialog" :message="resultMessage"/>
+    <Dealer v-if="deck" :deck="deck" ref="dealer" @result="result"/>
+    <div class="result-msg">
+      {{ message }}
+      {{ showBtn }}
+    </div>
+    <Player v-if="deck" :deck="deck" :show="showBtn" @stand="stand"/>
+    <v-btn id="start-btn" large color="#1867c0" @click="submit">REMATCH</v-btn>
   </div>
 </template>
 
 <script>
+import router from '@/router'
+import { Deck } from '@/models/Cards'
 import Player from '@/components/Player'
 import Dealer from '@/components/Dealer'
-import { Deck } from '@/models/Cards'
+import Dialog from '@/components/Dialog'
 
 export default {
   name: 'Main',
@@ -18,8 +24,9 @@ export default {
     deck: null,
     playerScore: null,
     delaerScore: null,
-    message: '',
-    resultMessage: ''
+    message: 'I wonder if I can win.',
+    resultMessage: '',
+    dialog: false
   }),
   mounted: function () {
     console.log('main mounted')
@@ -31,7 +38,9 @@ export default {
     stand (playerScore) {
       this.playerScore = playerScore
       if (playerScore === 'Bust') {
-        this.message = 'Bust!!負け！！'
+        this.message = 'Player : "Bust"'
+        this.resultMessage = 'You Lose!!'
+        this.dialog = true
       } else {
         this.$refs.dealer.exec()
       }
@@ -40,21 +49,33 @@ export default {
       this.dealerScore = dealerScore > 21 ? 'Bust' : dealerScore
       this.message = `Dealer : ${this.dealerScore} / Player : ${this.playerScore}`
       this.resultMessage = this.resultMsg()
+      this.dialog = true
     },
     resultMsg () {
       if (this.playerScore > this.dealerScore || this.dealerScore === 'Bust') {
-        console.log('you win')
-        return 'You Win'
+        return 'You Win!!'
       }
       if (this.playerScore < this.dealerScore || this.playerScore === 'Bust') {
-        return 'You Lose'
+        return 'You Lose!!'
       }
       return 'Draw'
+    },
+    submit () {
+      router.push('/start')
+    },
+    closeDialog () {
+      this.dialog = false
+    }
+  },
+  computed: {
+    showBtn () {
+      return !this.resultMessage
     }
   },
   components: {
     Player,
-    Dealer
+    Dealer,
+    Dialog
   }
 }
 </script>
@@ -62,5 +83,15 @@ export default {
 <style>
 .main {
   background: url("../assets/background.jpg") center center / cover no-repeat fixed;
+}
+.name {
+  font-size: 30px;
+  font-family: 'Righteous', cursive;
+}
+.result-msg {
+  font-size: 30px;
+  font-family: 'Righteous', cursive;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 </style>
