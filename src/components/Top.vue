@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     submit () {
-      router.push({ path: '/main' })
+      router.push({ path: '/start' })
     }
   }
 }
@@ -26,7 +26,7 @@ export default {
 
 <style>
 #title{
-  font-size: 90px;
+  font-size: 5vw;
 }
 #start-btn{
   margin-top: 50px;
