@@ -1,13 +1,13 @@
 <template>
   <div class="main">
+    <v-btn class="btn-color" color="#1867c0" large @click="submit">REMATCH</v-btn>
+    <v-btn class="btn-color" color="#1867c0" large @click="toTop">TOP</v-btn>
     <Dialog v-if="dialog" @close="closeDialog" :message="resultMessage"/>
     <Dealer v-if="deck" :deck="deck" ref="dealer" @result="result"/>
     <div class="result-msg">
       {{ message }}
     </div>
     <Player v-if="deck" :deck="deck" :show="showBtn" @stand="stand"/>
-    <v-btn class="btn-color" color="#1867c0" large @click="submit">REMATCH</v-btn>
-    <v-btn class="btn-color" color="#1867c0" large @click="toTop">TOP</v-btn>
   </div>
 </template>
 
