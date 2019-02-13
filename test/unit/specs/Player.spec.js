@@ -7,7 +7,8 @@ describe('Player.js', () => {
   beforeEach(() => {
     player = new Player(new Hand(), new Deck.Init(), 'user')
   })
-  it('score()', () => {
-    console.log(player)
+  it('take()', () => {
+    player.take()
+    expect(player.hand.cards.length).toBe(1)
   })
 })

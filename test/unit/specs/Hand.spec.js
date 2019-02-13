@@ -10,7 +10,7 @@ describe('Hand.js', () => {
     hand.add(new Card(SUIT.heart, 5))
     hand.add(new Card(SUIT.spade, 6))
     hand.add(new Card(SUIT.diamond, 7))
-    hand.add(new Card(SUIT.diamond,11))
+    hand.add(new Card(SUIT.diamond, 11))
     expect(hand.cards.length).toBe(4)
   })
   it('score() contains J Q K', () => {
@@ -24,6 +24,17 @@ describe('Hand.js', () => {
     hand.add(new Card(SUIT.spade, 6))
     hand.add(new Card(SUIT.diamond, 7))
     expect(hand.score()).toBe(18)
+  })
+  it('score() contains A judge 1', () => {
+    hand.add(new Card(SUIT.heart, 5))
+    hand.add(new Card(SUIT.spade, 6))
+    hand.add(new Card(SUIT.spade, 1))
+    expect(hand.score()).toBe(12)
+  })
+  it('score() contains A judge 11', () => {
+    hand.add(new Card(SUIT.heart, 10))
+    hand.add(new Card(SUIT.spade, 1))
+    expect(hand.score()).toBe(21)
   })
   it('isBurst() 22 or more', () => {
     hand.add(new Card(SUIT.heart, 3))

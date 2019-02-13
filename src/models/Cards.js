@@ -39,7 +39,7 @@ class Card {
   toObj () {
     const s = Object.keys(SUIT).filter(k => SUIT[k] === this.suit)[0]
     const r = Object.keys(RANK).filter(k => RANK[k] === this.rank)[0]
-    return { 'suit': s, 'rank': r, 'hide': false }
+    return { 'suit': s, 'rank': r, 'hide': this.hide }
   }
 
   point () {
@@ -62,6 +62,10 @@ class Deck {
     return new Deck(ret)
   }
 
+  /**
+   * cardsの要素が空かを返却する
+   * @return {Boolean}
+   */
   isEmpty () {
     return this.cards.length === 0
   }
@@ -70,10 +74,18 @@ class Deck {
     return _.shuffle(this.cards)
   }
 
+  /**
+   * cardsの要素の長さを返却する
+   * @return {Number}
+   */
   getLength () {
     return this.cards.length
   }
 
+  /**
+   * cardsから最後の要素を取り除き、その要素を返却する
+   * @return {Card}
+   */
   next () {
     return this.cards.pop()
   }

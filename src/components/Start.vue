@@ -13,12 +13,12 @@
 <script>
 import router from '@/router'
 export default {
-  name: 'Top',
+  name: 'Start',
   mounted: function () {
     console.log('start mounted')
     this.show = false
     setTimeout(() => {
-      router.push({ path: '/main' })
+      router.push('/main')
     }, 2000)
   },
   data: () => ({

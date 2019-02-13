@@ -1,6 +1,6 @@
 <template>
   <div class="player">
-    <span class="name">Player</span>
+    <span v-if="player" class="name">{{player.name}}</span>
     <div class="card-wrapper" v-if="player">
       <card v-for="(card, index) in player.hand.cards" :key="index" :card="card"></card>
     </div>
@@ -24,7 +24,8 @@ export default {
   }),
   mounted: function () {
     console.log('player mounted')
-    this.player = new Player(new Hand(), this.deck, 'test')
+    this.player = new Player(new Hand(), this.deck, 'Player')
+    console.log(this.player)
     this.player.take()
     this.player.take()
   },
@@ -50,8 +51,5 @@ export default {
 .card-wrapper {
   display: flex;
   justify-content: center;
-}
-.action-btn {
-
 }
 </style>

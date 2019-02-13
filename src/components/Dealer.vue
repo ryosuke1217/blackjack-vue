@@ -1,6 +1,6 @@
 <template>
   <div class="dealer">
-    <span class="name">Dealer</span>
+    <span v-if="dealer" class="name">{{dealer.name}}</span>
     <div class="card-wrapper" v-if="dealer">
       <card v-for="(card, index) in dealer.hand.cards" :key="index" :card="card" :hide="card.hide"></card>
     </div>
@@ -20,7 +20,7 @@ export default {
   }),
   mounted: function () {
     console.log('dealer mounted')
-    this.dealer = new Player(new Hand(), this.deck, 'test')
+    this.dealer = new Player(new Hand(), this.deck, 'Dealer')
     this.dealer.take()
     this.dealer.take()
     this.dealer.hand.cards[0]['hide'] = true
@@ -28,7 +28,6 @@ export default {
   methods: {
     exec () {
       console.log('dealer exec')
-      console.log(this.dealer.hand.cards)
       this.dealer.hand.cards[0]['hide'] = false
       while (this.dealer.hand.score() < 17) {
         this.dealer.take()

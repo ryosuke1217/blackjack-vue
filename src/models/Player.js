@@ -10,7 +10,6 @@ class Player {
   }
 
   score () {
-    console.log(this)
     return this.hand.score()
   }
 

@@ -24,7 +24,7 @@ describe('Cards.js', () => {
   })
   it('toObj()', () => {
     const card = new Card(SUIT.heart, 11)
-    expect(card.toObj()).toEqual({'suit': 'heart', 'rank': 'J'})
+    expect(card.toObj()).toEqual({ 'hide': false, 'suit': 'heart', 'rank': 'J' })
   })
   it('point()', () => {
     const card = new Card(SUIT.heart, 8)

@@ -6,7 +6,8 @@
       {{ message }}
     </div>
     <Player v-if="deck" :deck="deck" :show="showBtn" @stand="stand"/>
-    <v-btn id="start-btn" large color="#1867c0" @click="submit">REMATCH</v-btn>
+    <v-btn class="btn-color" color="#1867c0" large @click="submit">REMATCH</v-btn>
+    <v-btn class="btn-color" color="#1867c0" large @click="toTop">TOP</v-btn>
   </div>
 </template>
 
@@ -23,7 +24,7 @@ export default {
     deck: null,
     playerScore: null,
     delaerScore: null,
-    message: 'I wonder if I can win.',
+    message: 'Result display area',
     resultMessage: '',
     dialog: false
   }),
@@ -62,6 +63,9 @@ export default {
     submit () {
       router.push('/start')
     },
+    toTop () {
+      router.push('/top')
+    },
     closeDialog () {
       this.dialog = false
     }
@@ -82,7 +86,6 @@ export default {
 <style>
 .main {
   background: url("../assets/background.jpg") center center / cover no-repeat fixed;
-  margin-top: -60px;
 }
 .name {
   font-size: 30px;
@@ -93,5 +96,9 @@ export default {
   font-family: 'Righteous', cursive;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.btn-color{
+  margin-top: 50px;
+  cursor: pointer;
 }
 </style>
